@@ -1,0 +1,14 @@
+---
+name: HubDelay
+version: 0.0.1
+main: BagiCraft01\HubDelay\Main
+api: [3.0.0]
+load: POSTWORLD
+
+author: sProDev <suluh@teknowebapp.com>
+website: https://suluh.my.id/
+
+commands:
+  hub:
+    description: "Kembali ke HUB"
+...
