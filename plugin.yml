@@ -10,5 +10,5 @@ website: https://suluh.my.id/
 
 commands:
   hub:
-    description: "Kembali ke HUB"
+    description: "Teleport to HUB"
 ...

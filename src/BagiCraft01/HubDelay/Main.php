@@ -17,12 +17,12 @@ use pocketmine\scheduler\Task;
 class Main extends PluginBase implements Listener {
 
 	public function onEnable() {
-		$this->getServer()->getLogger()->info("[FroSystem] Plugin enabled by BagiCraft01");
+		$this->getServer()->getLogger()->info("[HubDelay] Plugin enabled by BagiCraft01");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
 	public function onDisable() {
-		$this->getServer()->getLogger()->info("[FroSystem] Plugin disabled by BagiCraft01");
+		$this->getServer()->getLogger()->info("[HubDelay] Plugin disabled by BagiCraft01");
 	}
 
 	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
@@ -30,10 +30,10 @@ class Main extends PluginBase implements Listener {
 			case 'hub':
 				if ($sender instanceof Player) {
 					$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), 20*5);
-					$sender->sendMessage("§aKamu akan diteleportkan dalam 5 detik!");
+					$sender->sendMessage("§aYou will be teleported in 5 seconds!");
 					return true;
 				} else {
-					$sender->sendMessage("§cRun this command in-game!");
+					$sender->sendMessage("§cPlease run this command in-game!");
 					return true;
 				}
 			break;
