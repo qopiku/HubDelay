@@ -15,5 +15,6 @@ So, you only need to change the contents of the **level-name** variable in the _
 
 ## Future Additions
 - [ ] Creating config files
+- [ ] Customize the time to delay to the hub
 - [ ] Added `/sethub` command to make it easier to set the position / location of the hub / lobby
 - [ ] Add custom aliases that can be set in the config file
