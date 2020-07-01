@@ -31,10 +31,8 @@ class Main extends PluginBase implements Listener {
 				if ($sender instanceof Player) {
 					$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), 20*5);
 					$sender->sendMessage("§aYou will be teleported in 5 seconds!");
-					return true;
 				} else {
 					$sender->sendMessage("§cPlease run this command in-game!");
-					return true;
 				}
 			break;
 			default:
