@@ -2,7 +2,6 @@
 
 namespace BagiCraft01\HubDelay;
 
-use BagiCraft01\HubDelay\Main;
 use pocketmine\Player;
 use pocketmine\level\Position;
 use pocketmine\math\Vector3;
