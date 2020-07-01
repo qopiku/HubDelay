@@ -9,6 +9,10 @@ use pocketmine\scheduler\Task;
 
 class HubTask extends Task {
 
+	private $main;
+
+	private $playerName;
+
 	public function __construct(Main $main, $playerName) {
 		$this->main = $main;
 		$this->playerName = $playerName;
