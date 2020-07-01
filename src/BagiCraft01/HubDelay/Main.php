@@ -37,8 +37,8 @@ class Main extends PluginBase implements Listener {
 					return true;
 				}
 			break;
-			case default:
-			break;
+			default:
+			break 2;
 		}
 		return true;
 	}
