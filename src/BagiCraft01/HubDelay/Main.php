@@ -36,6 +36,7 @@ class Main extends PluginBase implements Listener {
 					$sender->sendMessage("§cPlease run this command in-game!");
 					return true;
 				}
+				return true;
 			break;
 		}
 	}
