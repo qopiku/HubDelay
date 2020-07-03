@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener {
 					if ((isset($this->lastExec[$name])) && (($this->lastExec[$name] + 5 + $this->config["delay"]) > (microtime(true)))) {
 						$sender->sendMessage($this->config["msg_too_fast"]);
 					} else {
-						$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), 20*5);
+						$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), (20*$this->config["delay"]));
 						$sender->sendMessage($this->config["msg_being_teleported"]);
 						$this->lastExec[$name] = microtime(true);
 					}
