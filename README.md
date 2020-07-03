@@ -1,7 +1,7 @@
 # HubDelay
-Teleport to the hub with a delay of 5 seconds.
+Teleport to the hub with a delay.
 
-this is the PocketMine-MP Plugin to teleport to a hub with a delay of 5 seconds.
+this is the PocketMine-MP Plugin to teleport player to a hub with a delay.
 
 ## Requirements
 PocketMine-MP API 3.0.0
