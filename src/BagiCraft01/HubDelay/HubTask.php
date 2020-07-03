@@ -13,8 +13,11 @@ class HubTask extends Task {
 
 	private $playerName;
 
+	private $config = [];
+
 	public function __construct(Main $main, $playerName) {
 		$this->main = $main;
+		$this->config = $this->main->getConfig()->getAll();
 		$this->playerName = $playerName;
 	}
 
@@ -27,7 +30,8 @@ class HubTask extends Task {
 			$level = $this->main->getServer()->getDefaultLevel();
 
 			$player->teleport(new Position($x, $y, $z, $level));
-			$player->sendMessage("§eWelcome to Hub, §a" . $this->playerName);
+			$message = str_replace("{player}", $this->playerName, $this->config["msg_tp_success"]);
+			$player->sendMessage($message);
 		}
 	}
 

@@ -13,12 +13,25 @@ use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
 use pocketmine\Server;
 use pocketmine\scheduler\Task;
+use pocketmine\event\player\PlayerQuitEvent;
 
 class Main extends PluginBase implements Listener {
 
+	private $lastExec = [];
+
+	private $config = [];
+
 	public function onEnable() {
-		$this->getServer()->getLogger()->info("[HubDelay] Plugin enabled by BagiCraft01");
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		$this->saveDefaultConfig();
+		$this->config = $this->getConfig()->getAll();
+
+		if (is_numeric($this->config["delay"])) {
+			$this->getServer()->getLogger()->info("[HubDelay] Plugin enabled by BagiCraft01");
+			$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		} else {
+			$this->getServer()->getLogger()->info("[HubDelay] Plugin disabled. Please check the config file, there seems to be an error!");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+		}
 	}
 
 	public function onDisable() {
@@ -29,8 +42,17 @@ class Main extends PluginBase implements Listener {
 		switch ($cmd->getName()) {
 			case 'hub':
 				if ($sender instanceof Player) {
-					$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), 20*5);
-					$sender->sendMessage("§aYou will be teleported in 5 seconds!");
+					$name = $sender->getName();
+					if ((isset($this->lastExec[$name])) && (($this->lastExec[$name] + 5 + $this->config["delay"]) > (microtime(true)))) {
+						$sender->sendMessage($this->config["msg_too_fast"]);
+					} else {
+						$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), 20*5);
+						$sender->sendMessage($this->config["msg_being_teleported"]);
+						$this->lastExec[$name] = microtime(true);
+					}
+					if (!isset($this->lastExec[$name])) {
+						$this->lastExec[$name] = microtime(true);
+					}
 				} else {
 					$sender->sendMessage("§cPlease run this command in-game!");
 				}
@@ -39,4 +61,7 @@ class Main extends PluginBase implements Listener {
 		return true;
 	}
 
+	public function onPlayerQuit(PlayerQuitEvent $evt) {
+		unset($this->lastExec[$evt->getPlayer()->getName()]);
+	}
 }

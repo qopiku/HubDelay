@@ -1,0 +1,11 @@
+# Delay teleport to hub in seconds
+delay: 5
+
+# Message that will be displayed when the player tries "/ hub" quickly.
+msg_too_fast: "§cYou made a request too fast."
+
+# Message that will be displayed when the player will be teleported.
+msg_being_teleported: "§aYou will be teleported in 5 seconds!"
+
+# Message when the player is teleported successfully
+msg_tp_success: "§eWelcome to Hub, §a{player}"
