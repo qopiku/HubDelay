@@ -5,7 +5,7 @@ delay: 5
 msg_too_fast: "§cYou made a request too fast."
 
 # Message that will be displayed when the player will be teleported.
-msg_being_teleported: "§aYou will be teleported in 5 seconds!"
+msg_being_teleported: "§aYou will be teleported in {delay} seconds!"
 
 # Message when the player is teleported successfully
 msg_tp_success: "§eWelcome to Hub, §a{player}"
