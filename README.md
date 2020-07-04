@@ -11,7 +11,7 @@ Basically the `/hub` command will teleport the player to the default world and t
 So, you only need to change the contents of the **level-name** variable in the _server.properties_ file to be the name of your world lobby. and execute the `/setworldspawn` command on your world lobby server.
 
 ## Command
-- `/hub` - Back to hub with a delay of 5 seconds.
+- `/hub` - Back to hub with a delay.
 
 ## Future Additions
 - [X] Creating config files
