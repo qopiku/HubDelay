@@ -26,16 +26,11 @@ class Main extends PluginBase implements Listener {
 		$this->config = $this->getConfig()->getAll();
 
 		if (is_numeric($this->config["delay"])) {
-			$this->getServer()->getLogger()->info("[HubDelay] Plugin enabled by BagiCraft01");
 			$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		} else {
-			$this->getServer()->getLogger()->info("[HubDelay] Plugin disabled. Please check the config file, there seems to be an error!");
+			$this->getServer()->getLogger()->error("[HubDelay] Plugin disabled. Please check the config file, there seems to be an error!");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 		}
-	}
-
-	public function onDisable() {
-		$this->getServer()->getLogger()->info("[HubDelay] Plugin disabled by BagiCraft01");
 	}
 
 	public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool {
