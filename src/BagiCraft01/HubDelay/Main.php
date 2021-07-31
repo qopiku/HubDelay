@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener {
 						$sender->sendMessage($this->config["msg_too_fast"]);
 					} else {
 						$this->getScheduler()->scheduleDelayedTask(new HubTask($this, $sender->getName()), (20*$this->config["delay"]));
-						$message = str_replace("{delay}", $this->config["delay"], $this->config["msg_being_teleported"]);
+						$message = str_replace("{delay}", (string)$this->config["delay"], $this->config["msg_being_teleported"]);
 						$sender->sendMessage($message);
 						$this->lastExec[$name] = microtime(true);
 					}
